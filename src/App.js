@@ -3,8 +3,9 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import NavMenu from './components/NavMenu/NavMenu';
 import { Navigate } from 'react-router-dom';
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Calculation from './components/Calculation/Calculation'
-import CalculationResult from './components/CalculationResult/CalculationResult'
+import Calculation from './components/CalculationProbForm/CalculationProbForm'
+import CalculationResult from './components/MainProb/СalculationsProb/CalculationsProb'
+import MainProb from './components/MainProb/MainProb';
 
 const { Header, Content, Footer } = Layout;
 
@@ -15,21 +16,24 @@ const App = () => {
                 <Header>
                     <NavMenu />
                 </Header>
-                <Content style={{height:"100px"}}>
+                <Content style={{height:"83vh"}}>
                     <Routes>
                         <Route path="/calculation" element={<Calculation />} />
-                        <Route path="/result" element={<CalculationResult />} />
+                        <Route path="/result" element={<MainProb />} />
                     </Routes>
                 </Content>
-                <Footer
-                    style={{
-                        textAlign: 'center',
-                    }}
-                >
-                    Ant Design ©2023 Created by Ant UED
-                </Footer>
+
             </Layout>
         </BrowserRouter>
     );
 };
 export default App;
+
+
+{/* <Footer
+style={{
+    textAlign: 'center',
+}}
+>
+Ant Design ©2023 Created by Ant UED
+</Footer> */}
