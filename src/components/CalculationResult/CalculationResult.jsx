@@ -1,7 +1,7 @@
 const CalculationResult = () => {
     return (
         <div>
-            Результаты расчетов
+            Результаты расчетов - контент
         </div>
     )
 }

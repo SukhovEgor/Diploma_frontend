@@ -1,6 +1,6 @@
 import React from 'react';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import NavMenu from './components/NavMenu';
+import NavMenu from './components/NavMenu/NavMenu';
 import { Navigate } from 'react-router-dom';
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Calculation from './components/Calculation/Calculation'
@@ -15,9 +15,11 @@ const App = () => {
                 <Header>
                     <NavMenu />
                 </Header>
-                <Content>
-                    <Route path="/сalculation" element={<Calculation />} />
-                    <Route path="/сalculationres" element={<CalculationResult />} />
+                <Content style={{height:"100px"}}>
+                    <Routes>
+                        <Route path="/calculation" element={<Calculation />} />
+                        <Route path="/result" element={<CalculationResult />} />
+                    </Routes>
                 </Content>
                 <Footer
                     style={{
