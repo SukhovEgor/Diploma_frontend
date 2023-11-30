@@ -1,14 +1,13 @@
-import Calculation from "../CalculationProbForm/CalculationProbForm";
 import ResultsProb from "./ResultsProb/ResultsProb";
-import CalculationsProb from "./СalculationsProb/CalculationsProb";
+import CalculationsProbContainer from "./СalculationsProb/CalculationsProbContainer";
 import './MainProb.css';
 
 const MainProb = (props) => {
     return (
         <div className="mainProb">
-            <div className="calculationsProb">
+            <div className="calculations">
                 <div className="full">
-                    <CalculationsProb />
+                    <CalculationsProbContainer />
                 </div>
                 <div>
                     <ResultsProb />

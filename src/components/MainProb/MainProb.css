@@ -1,19 +1,27 @@
-.mainProb{
-    max-height:750px
-}
-
-.calculationsProb{
+.calculations{
     display: grid;
     grid-template-columns: 3fr 7fr;
     padding-left: 8px;
 }
 
-.full {
-    background-color: white;
-    height: 740px;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    margin-top: 7px;
-    padding-left: 15px;
-    padding-right: 5px;
+.main{
+    max-height:750px
+}
+
+
+.messages{
+    padding: 10px;
+}
+.messages.message{
+    padding: 10px;
+}
+
+.avaDialogs{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px; 
+}
+
+textarea{
+    margin-top: 30px;
 }
