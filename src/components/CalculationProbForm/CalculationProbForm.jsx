@@ -1,13 +1,24 @@
-import { Card, Form, Input, InputNumber, Row } from "antd";
+import { Button, Card, Form, Input, InputNumber, Row, message } from "antd";
+import {useNavigate} from "react-router-dom"
 import './CalculationProbForm.css'
-const CalculationProbForm = () => {
+const CalculationProbForm = (props) => {
+
+    let navigate = useNavigate();
+
+    const onFinish = (values) => {
+    console.log('Success:', values);
+    props.startCalculation(values);
+    message.loading('Расчет начат');
+    navigate("/result");
+  };
+
     return (
         <div>
             <Row type="flex" justify='center' align='middle' style={{ minHeight: '89vh' }}>
                 <Card className="form">
                     <h4 style={{ textAlign: 'center' }}>Исходные данные</h4>
                     <Form name="basic" labelCol={{ span: 12 }}
-                        wrapperCol={{ span: 14 }} autoComplete="off" size="default"
+                        wrapperCol={{ span: 14 }} autoComplete="off" onFinish={onFinish} size="default"
                         initialValues={{
                             name: '',
                         }}>
@@ -18,219 +29,129 @@ const CalculationProbForm = () => {
                             <Input.TextArea />
                         </Form.Item>
 
-                        <Form.Item label="Время работы основной защиты" 
-                            style={{
-                                marginBottom: 0,
-                            }}
+                        <Form.Item label="Время работы основной защиты"
+                            className="row"
                         >
-                            <Form.Item name="timeMainRelay"
-                                rules={[{required: true,},]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                }}
+                            <Form.Item className="time" name="mainRelayTime"
+                                rules={[{ required: true, },]}>
+                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
+                            </Form.Item>
+                            <Form.Item className="stdDev" name="stdDevMainRelayTime" 
+                                rules={[{required: true,},]}>
+                                <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
+                            </Form.Item>
+                        </Form.Item>
+
+                        <Form.Item label="Время работы промежуточного реле"
+                            className="row">
+                            <Form.Item name="intermediateRelayTime"
+                                rules={[{ required: true, },]}
+                                className="time" >
+                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
+                            </Form.Item>
+                            <Form.Item name="stdDevIntermediateRelayTime" className="stdDev"
+                                rules={[{required: true,},]}>
+                                <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
+                            </Form.Item>
+                        </Form.Item>
+
+                        <Form.Item label="Время отключения своего выключателя"
+                            className="row"
+                        >
+                            <Form.Item name="circuitBreakerTime"
+                                rules={[{ required: true, },]}
+                                className="time" 
                             >
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')}/>
+                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                             </Form.Item>
                             <Form.Item
-                                name="stdDevMainRelay"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                    margin: '0 8px',
-                                }}
+                                name="stdDevCircuitBreakerTime"
+                                rules={[{required: true,},]}
+                                className="stdDev"
                             >
                                 <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
                             </Form.Item>
                         </Form.Item>
 
-                        <Form.Item label="Время работы промежуточного реле" 
-                            style={{
-                                marginBottom: 0,
-                            }}
-                        >
-                            <Form.Item name="timeIntermediateRelay"
-                                rules={[{required: true,},]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                }}
-                            >
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')}/>
-                            </Form.Item>
-                            <Form.Item
-                                name="stdDevIntermediateRelay"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                    margin: '0 8px',
-                                }}
-                            >
-                                <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
-                            </Form.Item>
-                        </Form.Item>
-
-                        <Form.Item label="Время отключения своего выключателя" 
-                            style={{
-                                marginBottom: 0,
-                            }}
-                        >
-                            <Form.Item name="timeCircuitBreaker"
-                                rules={[{required: true,},]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                }}
-                            >
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')}/>
-                            </Form.Item>
-                            <Form.Item
-                                name="stdDevCircuitBreaker"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                    margin: '0 8px',
-                                }}
-                            >
-                                <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
-                            </Form.Item>
-                        </Form.Item>
-
-                        <Form.Item label="Время срабатывания дискретного входа" 
-                            style={{
-                                marginBottom: 0,
-                            }}
+                        <Form.Item label="Время срабатывания дискретного входа"
+                            className="row"
                         >
                             <Form.Item name="inputTime"
-                                rules={[{required: true,},]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                }}
+                                rules={[{ required: true, },]}
+                                className="time" 
                             >
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')}/>
+                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                             </Form.Item>
                             <Form.Item
                                 name="stdDevInputTime"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                    margin: '0 8px',
-                                }}
+                                rules={[{required: true,},]}
+                                className="stdDev"
                             >
                                 <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
                             </Form.Item>
                         </Form.Item>
 
-                        <Form.Item label="Дополнительное время основной защиты" 
-                            style={{
-                                marginBottom: 0,
-                            }}
+                        <Form.Item label="Дополнительное время основной защиты"
+                            className="row"
                         >
-                            <Form.Item name="timeAdditional"
-                                rules={[{required: true,},]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                }}
+                            <Form.Item name="additionalTime"
+                                rules={[{ required: true, },]}
+                                className="time" 
                             >
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')}/>
+                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                             </Form.Item>
                             <Form.Item
-                                name="stdDevTimeAdditional"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                    margin: '0 8px',
-                                }}
+                                name="stdDevAdditionalTime"
+                                rules={[{required: true,},]}
+                                className="stdDev"
                             >
                                 <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
                             </Form.Item>
                         </Form.Item>
 
-                        <Form.Item label="Дополнительное время срабатывания УРОВ" 
-                            style={{
-                                marginBottom: 0,
-                            }}
+                        <Form.Item label="Дополнительное время срабатывания УРОВ"
+                            className="row"
                         >
-                            <Form.Item name="timeAdditionalUROV"
-                                rules={[{required: true,},]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                }}
+                            <Form.Item name="additionalUROVTime"
+                                rules={[{ required: true, },]}
+                                className="time" 
                             >
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')}/>
+                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                             </Form.Item>
                             <Form.Item
-                                name="stdDevAdditionalUROV"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                                style={{
-                                    display: 'inline-block',
-                                    width: 'calc(30% - 8px)',
-                                    margin: '0 8px',
-                                }}
+                                name="stdDevAdditionalUROVTime"
+                                rules={[{required: true,},]}
+                                className="stdDev"
                             >
                                 <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
                             </Form.Item>
                         </Form.Item>
 
                         <Form.Item label="Стартовое значение выдержки времени УРОВ" name="initialValueUROV"
-                                rules={[{required: true,},]}>
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')}/>
+                            rules={[{ required: true, },]}>
+                            <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                         </Form.Item>
 
                         <Form.Item label="Конечное значение выдержки времени УРОВ" name="finalValueUROV"
-                                rules={[{required: true,},]}>
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')}/>
+                            rules={[{ required: true, },]}>
+                            <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                         </Form.Item>
 
-                        <Form.Item label="Шаг снижения выдержки времени УРОВ" name="stepUROV"
-                                rules={[{required: true,},]}>
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')}/>
+                        <Form.Item label="Шаг снижения выдержки времени УРОВ" name="stepValue"
+                            rules={[{ required: true, },]}>
+                            <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                         </Form.Item>
 
-                        <Form.Item label="Количество реализаций" name="ImplementationQuantity"
-                                rules={[{required: true,},]}>
-                                <InputNumber min={1} max={100000} />
+                        <Form.Item label="Количество реализаций" name="implementationQuantity"
+                            rules={[{ required: true, },]}>
+                            <InputNumber min={1} max={100000} />
                         </Form.Item>
 
-
-
-
-
-
-
-
+                        <Form.Item wrapperCol={{ offset: 8, span: 16, }}>
+                            <Button type="primary" htmlType="submit" style={{ marginTop: '20px' }}>
+                                Начать расчет
+                            </Button>
+                        </Form.Item>
                     </Form>
                 </Card>
             </Row>

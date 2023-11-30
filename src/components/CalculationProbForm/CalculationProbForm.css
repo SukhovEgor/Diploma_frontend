@@ -3,3 +3,18 @@
     border-radius: 10px;
     width: 800px;
 }
+
+.time{
+    display: inline-block;
+    width: calc(30% - 8px)
+}
+
+.stdDev{
+    display: inline-block;
+    width: calc(30% - 8px);
+    margin: 0 8px;
+}
+
+.row{
+    margin-Bottom: 0;
+}

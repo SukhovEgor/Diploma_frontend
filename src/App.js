@@ -1,4 +1,6 @@
 import React from 'react';
+import {Provider} from "react-redux";
+import store from "./redux/redux-store";
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import NavMenu from './components/NavMenu/NavMenu';
 import { Navigate } from 'react-router-dom';
@@ -12,6 +14,7 @@ const { Header, Content, Footer } = Layout;
 
 const App = () => {
     return (
+        <Provider store={store}>
         <BrowserRouter>
             <Layout className="layout">
                 <Header>
@@ -26,6 +29,7 @@ const App = () => {
 
             </Layout>
         </BrowserRouter>
+        </Provider>
     );
 };
 export default App;
