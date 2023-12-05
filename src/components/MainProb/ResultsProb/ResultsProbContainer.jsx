@@ -7,6 +7,7 @@ import s from './ResultsProb.module.css';
 import { useParams } from 'react-router-dom';
 import { Collapse, Tooltip, Divider, Row } from 'antd';
 import ResultInfo from "./ResultInfo";
+import ResultTable from "./ResultTable";
 
 const { TabPane } = Tabs;
 
@@ -19,6 +20,7 @@ const ResultsProbContainer = (props) => {
         <Divider >Результаты расчета "{props.calculations?.calculations[index]?.name}" </Divider>
         <div className={s.graphics}>
             <ResultInfo calculations={props.calculations}/>
+            <ResultTable calculationResults={props.calculationResults}/>
         </div>
         <div className={s.parameters}>
            
