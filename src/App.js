@@ -1,5 +1,5 @@
 import React from 'react';
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 import store from "./redux/redux-store";
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import NavMenu from './components/NavMenu/NavMenu';
@@ -15,20 +15,25 @@ const { Header, Content, Footer } = Layout;
 const App = () => {
     return (
         <Provider store={store}>
-        <BrowserRouter>
-            <Layout className="layout">
-                <Header>
-                    <NavMenu />
-                </Header>
-                <Content style={{height:"83vh"}}>
-                    <Routes>
-                        <Route path="/calculation" element={<CalculationProbFormContainer />} />
-                        <Route path="/result" element={<MainProb />} />
-                    </Routes>
-                </Content>
+            <BrowserRouter>
+                <Layout className="layout">
+                    <Header>
+                        <NavMenu />
+                    </Header>
+                    <Content style={{ height: "83vh" }}>
+                        <Routes>
+                            <Route path="/" element={<Navigate to="/result" />} />
+                            <Route path='/result' element={<MainProb />}>
+                                <Route path=':id' element={<MainProb />} />
+                            </Route>
+                            <Route exact path='/calculation' element={<CalculationProbFormContainer />} />
 
-            </Layout>
-        </BrowserRouter>
+
+                        </Routes>
+                    </Content>
+
+                </Layout>
+            </BrowserRouter>
         </Provider>
     );
 };
@@ -42,3 +47,6 @@ style={{
 >
 Ant Design ©2023 Created by Ant UED
 </Footer> */}
+
+{/* <Route path="/calculation" element={<CalculationProbFormContainer />} />
+<Route path="/result" element={<MainProb />} /> */}

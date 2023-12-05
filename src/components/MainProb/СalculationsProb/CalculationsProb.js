@@ -30,14 +30,13 @@ const CalculationsUID = (props) => {
                         <List.Item className={s.calculationsItems} key={item.title} actions={[<DeleteOutlined style={{color: 'blue'}} onClick={() => deleteCalculationById(item.id)}>Удалить</DeleteOutlined>]}>
                             <List.Item.Meta
                                 title={<CalculationProbItem calculations={item} deleteCalculationById={deleteCalculationById} />}
-                                description={item.calculationEnd}
-                            />
-                            <div className={s.sechName}>{item.calculationStart}</div>
+                               />
+                            <div className={s.date}>{item.calculationStart}</div>
                         </List.Item>)} 
                     />          
                 </TabPane>
-            <a>edsg</a>
-                </Tabs>           
+                
+            </Tabs>           
         </div>; 
 }
 export default CalculationsUID;

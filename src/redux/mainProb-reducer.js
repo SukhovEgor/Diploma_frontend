@@ -8,20 +8,18 @@ let initialState = {
     calculations: {
         calculationAmount: 2,
         calculations: [
-        { id: 'iyk', name:'testInitial' , calculationEnd: null,progress: null },
+        { id: 'iyk', name:'testInitial' },
     ]},
 
-    calculationResultInfo: {
-            powerFlowResultProcessed: {maximum: '20',minimum: '13', mean: '18', stD: '9', histogramData: [{interval: '1-2', height: '0,012'}]},
-            voltageResultProcessed: [{nodeNumber: 'testNum', histogramData: [{interval: '1-2', height: '0,012'}]},
-                {nodeNumber: 'testNum2', histogramData: [{interval: '1-2', height: '0,012'}]}],
-            currentResultProcessed: [],
+    calculationResults: {
 
-            powerFlowResults: [{powerFlowLimit: 868, calculationId: "282cac56",implementationId: 1}],
-            voltageResults: [{nodeNumber: 2643,nodeName: "Север",voltageValue: 176,calculationId: "282ca",implementationId: 1}],
-            currentResults: [],
-        worseningSettings: [1654, 2653]
-}};
+      calculationId: "2a281fcd-78dc-4925-8b2b-9393ae2cae8f",
+      implementationId: 1,
+      urovValue: 0.3,
+      probabilityValue: 0,
+      urovTimeArray: [0.356613,0.360472,]
+    },
+};
 
 const mainProbReducer = (state = initialState, action) => { 
     switch (action.type) {
@@ -33,7 +31,7 @@ const mainProbReducer = (state = initialState, action) => {
         case SET_CALCULATIONRESULTINFO:
             return {                                     
                 ...state,
-                calculationResultInfo: action.calculationResultInfo
+                calculationResults: action.calculationResults
             }
         default:                                     
             return state;
