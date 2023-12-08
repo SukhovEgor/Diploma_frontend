@@ -1,6 +1,12 @@
 import { Table } from "antd";
+import { useParams } from 'react-router-dom';
 
 const ResultTable = (props) => {
+const params = useParams();
+
+let index = props.calculationResults?.calculationResults;
+console.log(index.length)
+
 const columns = [
     {
         title: 'Выдежка времени УРОВ',
@@ -13,18 +19,21 @@ const columns = [
         key: 'probability',
     }
 ]
-const data = [
-    {
-        key: '1',
-        time: ' 300 мс',
-        probability: '10%'
-    },
-    {
-        key: '2',
-        time: ' 100 мс',
-        probability: '20%'
+const data = []
+if(index.length > 1){
+    for (let i = 0; i<index.length; i++){
+        
+        data.push(
+            {
+                key: index[i].implementationId,
+                time:  index[i].urovValue,
+                probability: index[i].probabilityValue
+        
+            })
     }
-]
+}
+
+
 return (
     <Table columns={columns} dataSource={data} />
 )

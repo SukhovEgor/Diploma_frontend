@@ -35,7 +35,6 @@ const CalculationsUID = (props) => {
                         </List.Item>)} 
                     />          
                 </TabPane>
-                
             </Tabs>           
         </div>; 
 }
