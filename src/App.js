@@ -20,7 +20,7 @@ const App = () => {
                     <Header>
                         <NavMenu />
                     </Header>
-                    <Content style={{ height: "83vh" }}>
+                    <Content style={{ height: "100%" }}>
                         <Routes>
                             <Route path="/" element={<Navigate to="/result" />} />
                             <Route path='/result' element={<MainProb />}>

@@ -1,11 +1,10 @@
 .calculations{
-    display: grid;
-    grid-template-columns: 3fr 7fr;
     padding-left: 8px;
+
 }
 
-.main{
-    max-height:750px
+.mainProb{
+    height: 100%
 }
 
 

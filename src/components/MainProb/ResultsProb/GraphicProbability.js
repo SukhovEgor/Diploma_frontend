@@ -8,7 +8,7 @@ const GraphicInit = (props) => {
 
             data.push(
                 {
-                    time: resultArray[i].urovValue,
+                    time: resultArray[i].urovValue * 1000,
                     probability: resultArray[i].probabilityValue * 100
                 })
         }
@@ -21,7 +21,7 @@ const GraphicInit = (props) => {
                 <YAxis unit='%' />
                 <Tooltip />
                 <Legend />
-                <Line type="momotone" dataKey="probability" name='Вероятность излишней работы УРОВ' stroke="#8884d8" dot={false} strokeWidth={3} />
+                <Line type="momotone" dataKey="probability" name='Вероятность излишней работы УРОВ' stroke="#158078" dot={false} strokeWidth={3} />
             </LineChart>
         </div>
     </div>;
