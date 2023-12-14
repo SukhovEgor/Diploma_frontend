@@ -14,11 +14,12 @@ let initialState = {
 
     calculationResults: {
         calculationResults: [{
-            calculationId: "2a281fcd-78dc-4925-8b2b-9393ae2cae8f",
+            //calculationId: "2a281fcd-78dc-4925-8b2b-9393ae2cae8f",
             implementationId: 0,
             urovValue: 0.3,
             probabilityValue: 0,
-            urovTimeArray: [0.356613, 0.360472,]
+            urovTimeArray: [0.356613, 0.360472,],
+            histogramData: [{interval:"0,44 - 0,45", height: 10},]
         },
         ]
     },
