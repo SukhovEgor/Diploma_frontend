@@ -15,7 +15,7 @@ const GraphicInit = (props) => {
     }
     return <div >
         <div className="chart">
-            <LineChart width={560} height={300} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <LineChart width={1010} height={450} data={data} margin={{ top: 5, right: 30, left: -10, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="time" />
                 <YAxis unit='%' />

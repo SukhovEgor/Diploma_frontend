@@ -2,12 +2,13 @@ import React from 'react';
 import Plot from 'react-plotly.js';
 
 const Histogram = (props) => {
-    let resultArray = props.calculationResults?.calculationResults;
+    
     var x1 = props.firstHistogram
     var x2 = props.secondHistogram
     var trace1 = {
         x: x1,
         type: "histogram",
+        name: "dsf",
         opacity: 0.5,
         marker: {
             color: 'green',
@@ -24,7 +25,7 @@ const Histogram = (props) => {
     return <Plot
 
         data={[trace1, trace2]}
-        layout={{ width: 520, height: 440, barmode: "overlay", title: 'A Fancy Plot' }}
+        layout={{ width: 400, height: 340, displayModeBar: false, barmode: "overlay"}}
     />
 }
 export default Histogram;

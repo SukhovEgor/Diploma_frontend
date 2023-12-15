@@ -34,7 +34,7 @@ const ResultTable = (props) => {
 
 
     return (
-        <Table columns={columns} dataSource={data} pagination={{pageSize: 6}}/>
+        <Table columns={columns} dataSource={data} pagination={{pageSize: 5}}/>
     )
 }
 
