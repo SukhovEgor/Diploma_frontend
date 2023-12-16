@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer} from 'recharts';
 
 const GraphicInit = (props) => {
     let resultArray = props.calculationResults?.calculationResults;
@@ -15,7 +15,8 @@ const GraphicInit = (props) => {
     }
     return <div >
         <div className="chart">
-            <LineChart width={1010} height={450} data={data} margin={{ top: 5, right: 30, left: -10, bottom: 5 }}>
+        <ResponsiveContainer width="100%" height={400}>
+            <LineChart width={900} height={450} data={data} margin={{ top: 15, right: 30, left: -10, bottom: -20 }}>
             <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="time" />
                 <YAxis unit='%' />
@@ -23,6 +24,7 @@ const GraphicInit = (props) => {
                 <Legend />
                 <Line type="momotone" dataKey="probability" name='Вероятность излишней работы УРОВ' stroke="#158078" dot={false} strokeWidth={3} />
             </LineChart>
+            </ResponsiveContainer>
         </div>
     </div>;
 }

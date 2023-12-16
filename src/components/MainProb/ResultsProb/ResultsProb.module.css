@@ -2,6 +2,7 @@
     margin-left: 10px;
     padding-left: 7px;
     border-left: 1px solid rgb(221, 218, 218);
+    overflow: auto;
 }
 
 .graphics{  
@@ -11,7 +12,7 @@
 }
 .infoResult{  
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     
 }
 .scrollcontainer{
@@ -30,8 +31,10 @@
 }
 .table{  
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     height: 40vh;
+    padding-bottom: 10px;
+    
 }
 
 .info {
@@ -52,9 +55,9 @@
     border-radius: 10px;
     display: inline-block;
     margin-right: 10px;
-    margin-bottom: 5px;
-    padding-left: 10px;
-    padding-top: 5px;
+    
+    
+    padding-top: 10px;
     background-color: white;
 }
 .graphic {

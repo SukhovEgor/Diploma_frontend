@@ -12,6 +12,7 @@ import GraphicProbability from "./GraphicProbability";
 import Histograms from "./Histograms";
 import Histogram from "./Histogram";
 import HistogramContainer from "./HistogramContainer";
+import { ResponsiveContainer } from "recharts";
 
 const { TabPane } = Tabs;
 
@@ -27,17 +28,15 @@ const ResultsProbContainer = (props) => {
                 <div className={s.table}>
                     <ResultInfo calculations={props.calculations} className={s.graphic} />
                     <div className={s.graphic}>
-                    <ResultTable calculationResults={props.calculationResults} />
-
+                        <ResultTable calculationResults={props.calculationResults} />
                     </div>
                 </div>
                 <div className={s.graph}>
-                    <GraphicProbability calculationResults={props.calculationResults}
-                        measure=' МВт' name='Предельный переток' />
+                    <GraphicProbability calculationResults={props.calculationResults} />
                 </div>
 
             </div>
-            <div className={s.scrollcontainer}>
+            <div className={s.scrollcontainer}>            
                 <HistogramContainer calculationResults={props.calculationResults} calculations={props.calculations} />
             </div>
         </div>

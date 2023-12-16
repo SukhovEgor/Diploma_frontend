@@ -12,11 +12,13 @@ const ResultTable = (props) => {
             title: 'Выдежка времени УРОВ',
             dataIndex: 'time',
             key: 'time',
+            align: "center"
         },
         {
             title: 'Вероятность излишней работы УРОВ',
             dataIndex: 'probability',
             key: 'probability',
+            align: "center"
         }
     ]
     const data = []
@@ -26,15 +28,15 @@ const ResultTable = (props) => {
             data.push(
                 {
                     key: resultArray[i].implementationId,
-                    time: resultArray[i].urovValue,
-                    probability: resultArray[i].probabilityValue
+                    time: resultArray[i].urovValue * 1000 + " мс",
+                    probability: (resultArray[i].probabilityValue * 100).toFixed(2) + "%"
                 })
         }
     }
 
 
     return (
-        <Table columns={columns} dataSource={data} pagination={{pageSize: 5}}/>
+        <Table columns={columns} dataSource={data} pagination={{pageSize: 6}} bordered = {true}/>
     )
 }
 
