@@ -38,7 +38,7 @@ const CalculationProbForm = (props) => {
                             </Form.Item>
                             <Form.Item className="stdDev" name="stdDevMainRelayTime" 
                                 rules={[{required: true,},]}>
-                                <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
+                                <InputNumber min={0} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
                             </Form.Item>
                         </Form.Item>
 
@@ -47,11 +47,11 @@ const CalculationProbForm = (props) => {
                             <Form.Item name="intermediateRelayTime"
                                 rules={[{ required: true, },]}
                                 className="time" >
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
+                                <InputNumber min={0} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                             </Form.Item>
                             <Form.Item name="stdDevIntermediateRelayTime" className="stdDev"
                                 rules={[{required: true,},]}>
-                                <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
+                                <InputNumber min={0} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
                             </Form.Item>
                         </Form.Item>
 
@@ -69,7 +69,7 @@ const CalculationProbForm = (props) => {
                                 rules={[{required: true,},]}
                                 className="stdDev"
                             >
-                                <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
+                                <InputNumber min={0} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
                             </Form.Item>
                         </Form.Item>
 
@@ -80,14 +80,14 @@ const CalculationProbForm = (props) => {
                                 rules={[{ required: true, },]}
                                 className="time" 
                             >
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
+                                <InputNumber min={0} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                             </Form.Item>
                             <Form.Item
                                 name="stdDevInputTime"
                                 rules={[{required: true,},]}
                                 className="stdDev"
                             >
-                                <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
+                                <InputNumber min={0} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
                             </Form.Item>
                         </Form.Item>
 
@@ -95,17 +95,17 @@ const CalculationProbForm = (props) => {
                             className="row"
                         >
                             <Form.Item name="additionalTime"
-                                rules={[{ required: true, },]}
+                                rules={[{ required: false, },]}
                                 className="time" 
                             >
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
+                                <InputNumber min={0} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                             </Form.Item>
                             <Form.Item
                                 name="stdDevAdditionalTime"
-                                rules={[{required: true,},]}
+                                rules={[{required: false,},]}
                                 className="stdDev"
                             >
-                                <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
+                                <InputNumber min={0} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
                             </Form.Item>
                         </Form.Item>
 
@@ -113,23 +113,23 @@ const CalculationProbForm = (props) => {
                             className="row"
                         >
                             <Form.Item name="additionalUROVTime"
-                                rules={[{ required: true, },]}
+                                rules={[{ required: false, },]}
                                 className="time" 
                             >
-                                <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
+                                <InputNumber min={0} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                             </Form.Item>
                             <Form.Item
                                 name="stdDevAdditionalUROVTime"
-                                rules={[{required: true,},]}
+                                rules={[{required: false,},]}
                                 className="stdDev"
                             >
-                                <InputNumber min={1} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
+                                <InputNumber min={0} max={100} formatter={(value) => `${value}%`} parser={(value) => value.replace('%', '')} />
                             </Form.Item>
                         </Form.Item>
 
                         <Form.Item label="Стартовое значение выдержки времени УРОВ" name="initialValueUROV"
                             rules={[{ required: true, },]}>
-                            <InputNumber min={1} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
+                            <InputNumber min={50} max={500} formatter={(value) => `${value}мс`} parser={(value) => value.replace('мс', '')} />
                         </Form.Item>
 
                         <Form.Item label="Конечное значение выдержки времени УРОВ" name="finalValueUROV"

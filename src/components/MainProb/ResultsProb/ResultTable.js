@@ -2,11 +2,7 @@ import { Table } from "antd";
 import { useParams } from 'react-router-dom';
 
 const ResultTable = (props) => {
-    const params = useParams();
-
     let resultArray = props.calculationResults?.calculationResults;
-
-
     const columns = [
         {
             title: 'Выдежка времени УРОВ',
@@ -36,7 +32,10 @@ const ResultTable = (props) => {
 
 
     return (
-        <Table columns={columns} dataSource={data} pagination={{pageSize: 6}} bordered = {true}/>
+        <div style={{marginRight: 10}}>
+            <Table columns={columns} dataSource={data} pagination={{pageSize: 6}} bordered = {true} size="middle"/>
+
+        </div>
     )
 }
 
