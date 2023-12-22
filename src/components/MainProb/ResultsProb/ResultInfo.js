@@ -45,7 +45,7 @@ const ResultInfo = (props) => {
         data.push(
             {
                 key: 1,
-                name: <Tooltip placement="left" title="Время работы основной защиты рассматриваемого присоединения">Тоз: </Tooltip>,
+                name: <Tooltip placement="left" title="Время работы основной защиты рассматриваемого присоединения">ТОЗ: </Tooltip>,
                 time: props.calculations?.calculations[index]?.mainRelayTime * 1000 + " мс",
                 stdDev: stdDevMainRelayTime + "%"
             },
@@ -96,8 +96,8 @@ const ResultInfo = (props) => {
             },
             {
                 key: 8,
-                name: <Tooltip placement="left" title=" Исходное время срабатывания УРОВ">
-                    <Text type="success">ТЛ_КЗО_УРОВ: </Text>
+                name: <Tooltip placement="left" title="Исходное время срабатывания УРОВ">
+                    <Text type="success">ТСр_УРОВ: </Text>
                 </Tooltip>,
                 time:
                     <Text type="success">{
@@ -114,7 +114,7 @@ const ResultInfo = (props) => {
         )
     }
 
-
+    
     return (
         <div className={s.graphic}>
 

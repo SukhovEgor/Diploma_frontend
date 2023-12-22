@@ -20,3 +20,24 @@ export const mainAPI = {
         return axios.delete('https://localhost:7295/api/Calculations/DeleteCalculations/'+id); //
     },
 }
+
+export const authAPI = {
+    auth(values) {
+        return axios.post('https://localhost:7295/api/Auth/auth',values); //
+    },
+    whoAmI() {
+        return axios.get('https://localhost:7295/api/Auth/whoAmI',{headers: authHeader()});
+    },
+    getUsers() {
+        return axios.get('https://localhost:7295/api/Auth/GetUsers'); //
+    },
+    createUser(values) {
+        return axios.post('https://localhost:7295/api/Auth/CreateUser',values); //
+    },
+}
+
+export const authHeader = () => {
+    const token = localStorage.getItem('token');
+    //if (token) {
+    return {Authorization: 'Bearer ' + token};
+}

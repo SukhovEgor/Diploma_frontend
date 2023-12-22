@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'antd';
-import s from './NavMenu.module.css';
+import { MenuOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
+
 
  const NavMenu = () => {
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+      }
      return (
          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']} style={{
              display: 'flex',
@@ -16,6 +23,14 @@ import s from './NavMenu.module.css';
              <Menu.Item key="calculation" >
                  <NavLink tag={Link} className="text-white" to="/calculation" style={{ textDecoration: 'none' }}>Выполнить расчет</NavLink>
              </Menu.Item>
+             <Menu.Item key="users" > 
+          <NavLink tag={Link} className="text-white" to="/users" style={{ textDecoration: 'none' }}>Пользователи</NavLink>
+        </Menu.Item>
+        <Menu.SubMenu title={localStorage.getItem('user')} icon={<UserOutlined/>} style={{float:'right',marginLeft:'auto'}}>
+        <Menu.Item icon={<LogoutOutlined />} >
+          <a onClick={logout} href='/'>Выйти</a>
+          </Menu.Item>
+          </Menu.SubMenu>
          </Menu>
      )
 }
