@@ -9,6 +9,7 @@ const CalculationProbForm = (props) => {
     let navigate = useNavigate();
 
     const onFinish = (values) => {
+        values.userId = localStorage.getItem('userId');
     console.log('Success:', values);
     props.startCalculation(values);
     message.loading('Расчет начат');
@@ -149,11 +150,9 @@ const CalculationProbForm = (props) => {
                             rules={[{ required: true, },]}>
                             <InputNumber min={1} max={100000} />
                         </Form.Item>
-                        <Form.Item name="userId" value={localStorage.getItem('userId')} />
-                            
                         <Form.Item wrapperCol={{ offset: 8, span: 16, }}>
                             
-                            <Button type="primary" htmlType="submit" style={{ marginTop: '20px' }} name='userId' >
+                            <Button type="primary" htmlType="submit" style={{ marginTop: '20px' }}>
                                 Начать расчет
                             </Button>
                         </Form.Item>

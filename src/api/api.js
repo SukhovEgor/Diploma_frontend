@@ -35,6 +35,9 @@ export const authAPI = {
     createUser(values) {
         return axios.post('https://localhost:7295/api/Auth/CreateUser',values); //
     },
+    deleteUserById(id) {
+        return axios.delete('https://localhost:7295/api/Auth/DeleteUser/'+id); //
+    },
 }
 
 export const authHeader = () => {

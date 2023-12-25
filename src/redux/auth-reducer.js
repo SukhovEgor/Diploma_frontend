@@ -70,4 +70,11 @@ export const whoAmI = () => {
     }
 }
 
+export const deleteUserById = (id) => {
+    return async (dispatch) => {
+        let response = await authAPI.deleteUserById(id);
+        dispatch(setUsers(response.data));
+    }
+}
+
 export default authReducer;

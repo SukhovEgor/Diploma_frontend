@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { compose } from "redux";
-import { getUsers, createUser } from '../../redux/auth-reducer';
+import { getUsers, createUser, deleteUserById } from '../../redux/auth-reducer';
 import { connect } from 'react-redux';
 import Users from "./Users";
 
@@ -14,9 +14,14 @@ const UsersContainer = React.memo((props) => {
         props.createUser(user);
        }
 
+       const deleteUserById = (id) => {
+        props.deleteUserById(id);
+       }
+    
+
     return(  
         <div>
-            <Users users={props.users} createUser={createUser}/>
+            <Users users={props.users} createUser={createUser} deleteUserById ={deleteUserById}/>
         </div>  )           
 })
 
@@ -27,5 +32,5 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, { getUsers, createUser}))
+    connect(mapStateToProps, { getUsers, createUser, deleteUserById}))
     (UsersContainer);

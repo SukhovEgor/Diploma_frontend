@@ -21,13 +21,11 @@ const UserCreateForm = ({ open, onCreate, onCancel }) => {
                 <Form.Item name="lastName" label="Отчество" rules={[{ required: true, message: 'Введите отчество', },]}>
                     <Input type="textarea" />
                 </Form.Item>
-                <Form.Item name="post" label="Должность" rules={[{ required: true, message: 'Введите должность', },]}> 
-                    <Input type="textarea" />
-                </Form.Item>
-                <Form.Item name="ы" label="Роль" rules={[{ required: true, message: 'Введите должность', },]}>
+                <Form.Item name="post" label="Роль" rules={[{ required: true, message: 'Введите роль', },]}>
                     <Select>
                         <Select.Option value="Пользователь">Технолог</Select.Option>
                         <Select.Option value="Администратор">Администратор</Select.Option>
+                        <Select.Option value="Разработчик">Разработчик</Select.Option>
                     </Select>
                 </Form.Item>
                 <Form.Item name="login" label="Логин" rules={[{ required: true, message: 'Введите логин', },]}>
