@@ -10,8 +10,8 @@ export const calculationFormAPI = {
 }
 
 export const mainAPI = {
-    getCalculations() {
-        return axios.get('https://localhost:7295/api/Calculations/GetCalculations'); //
+    getCalculations(userId) {
+        return axios.get('https://localhost:7295/api/Calculations/GetCalculations/' + userId); //
     },
     getCalculationStatisticById(id) {
         return axios.get('https://localhost:7295/api/Calculations/GetCalculationResult/'+id); //

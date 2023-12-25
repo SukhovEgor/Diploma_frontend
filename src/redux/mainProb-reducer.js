@@ -52,9 +52,9 @@ const mainProbReducer = (state = initialState, action) => {
 export const setCalculations = (calculations) => (
     { type: SET_CALCULATIONS, calculations }
 )
-export const getCalculations = () => {
+export const getCalculations = (userId) => {
     return async (dispatch) => {
-        let response = await mainAPI.getCalculations();
+        let response = await mainAPI.getCalculations(userId);
         dispatch(setCalculations(response.data));
     }
 }

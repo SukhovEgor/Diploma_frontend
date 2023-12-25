@@ -10,9 +10,9 @@ const CalculationsProbContainer = (props) => {
 
     const params = useParams();
     const calculationId = params.id;
-
+    
     useEffect(() => {
-        props.getCalculations();
+        props.getCalculations(localStorage.getItem('userId'));
         if (calculationId) {
             props.getCalculationResultInfoById(calculationId);
         }

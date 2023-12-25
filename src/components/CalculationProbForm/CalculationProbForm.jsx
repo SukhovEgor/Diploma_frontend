@@ -4,7 +4,8 @@ import './CalculationProbForm.css'
 const CalculationProbForm = (props) => {
     let name = localStorage.getItem('userId');
     console.log(name)
- debugger;
+    
+
     let navigate = useNavigate();
 
     const onFinish = (values) => {
@@ -148,15 +149,18 @@ const CalculationProbForm = (props) => {
                             rules={[{ required: true, },]}>
                             <InputNumber min={1} max={100000} />
                         </Form.Item>
-
+                        <Form.Item name="userId" value={localStorage.getItem('userId')} />
+                            
                         <Form.Item wrapperCol={{ offset: 8, span: 16, }}>
-                            <Button type="primary" htmlType="submit" style={{ marginTop: '20px' }}>
+                            
+                            <Button type="primary" htmlType="submit" style={{ marginTop: '20px' }} name='userId' >
                                 Начать расчет
                             </Button>
                         </Form.Item>
                     </Form>
                 </Card>
             </Row>
+           
         </div>
     )
 }
