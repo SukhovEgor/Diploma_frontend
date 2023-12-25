@@ -2,7 +2,9 @@ import { Button, Card, Form, Input, InputNumber, Row, message } from "antd";
 import {useNavigate} from "react-router-dom"
 import './CalculationProbForm.css'
 const CalculationProbForm = (props) => {
-
+    let name = localStorage.getItem('userId');
+    console.log(name)
+ debugger;
     let navigate = useNavigate();
 
     const onFinish = (values) => {

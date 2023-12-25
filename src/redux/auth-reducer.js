@@ -4,7 +4,7 @@ const SET_USER = 'SET_USER';
 const SET_USERS = 'SET_USERS';
 
 let initialState = {
-    user: {name: localStorage.getItem('user'), token: localStorage.getItem('token')},
+    user: {name: localStorage.getItem('user'), token: localStorage.getItem('token'), id: localStorage.getItem('userId')},
     users: [{name:null, login: null,post: null}]
 };
 
@@ -35,6 +35,7 @@ export const getUser = (values) => {
         if (response.status == 200 && response.data != null) {
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("user", response.data.name);
+            localStorage.setItem("userId", response.data.id);
             dispatch(setUser(response.data));
         }
         if (response.status == 400) {
@@ -64,7 +65,7 @@ export const whoAmI = () => {
     return async (dispatch) => { 
         let response = await authAPI.whoAmI();
         if (response.status == 200) {
-            dispatch(setUser(response.data));
+            dispatch(setUser(response.data));   
         }           
     }
 }

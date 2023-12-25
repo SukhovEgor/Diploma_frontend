@@ -27,6 +27,7 @@ export const authAPI = {
     },
     whoAmI() {
         return axios.get('https://localhost:7295/api/Auth/whoAmI',{headers: authHeader()});
+        
     },
     getUsers() {
         return axios.get('https://localhost:7295/api/Auth/GetUsers'); //

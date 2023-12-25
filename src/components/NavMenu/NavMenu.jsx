@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux';
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
+        localStorage.removeItem("userId");
+
       }
      return (
          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']} style={{

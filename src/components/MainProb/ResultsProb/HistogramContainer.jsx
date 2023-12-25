@@ -6,7 +6,6 @@ const HistogramContainer = (props) => {
     const params = useParams();
     const calculationId = params.id;
     let index = props.calculations?.calculations.findIndex(item => item.id == calculationId);
-    debugger;
     let resultArray = props.calculationResults?.calculationResults;
     console.log(resultArray.length)
     if (resultArray.length > 1) {
