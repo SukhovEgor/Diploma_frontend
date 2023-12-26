@@ -57,7 +57,8 @@ export const getUsers = () => {
 export const createUser = (user) => {
     return async (dispatch) => { 
         await authAPI.createUser(user);
-        getUsers();     
+        let response = await authAPI.getUsers();
+        dispatch(setUsers(response.data));   
     }
 }
 
@@ -72,8 +73,9 @@ export const whoAmI = () => {
 
 export const deleteUserById = (id) => {
     return async (dispatch) => {
-        let response = await authAPI.deleteUserById(id);
-        dispatch(setUsers(response.data));
+        await authAPI.deleteUserById(id);
+        let response = await authAPI.getUsers();
+        dispatch(setUsers(response.data));      
     }
 }
 

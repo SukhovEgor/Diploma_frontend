@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import './MainProb.css';
 import ResultsProbContainer from "./ResultsProb/ResultsProbContainer";
-import CalculationsProbContainer from './СalculationsProb/CalculationsProbContainer';
 import { Col, Row } from 'antd';
+import CalculationsProbContainer from './СalculationsProb/CalculationsProbContainer';
 
 const MainProb = (props) => {
     const params = useParams();

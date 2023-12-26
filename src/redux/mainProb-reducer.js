@@ -72,8 +72,9 @@ export const getCalculationResultInfoById = (id) => {
 
 export const deleteCalculationById = (id) => {
     return async (dispatch) => {
-        let response = await mainAPI.deleteCalculationById(id);
-        dispatch(setCalculations(response.data));
+         await mainAPI.deleteCalculationById(id); 
+         let response = await mainAPI.getCalculations(localStorage.getItem('userId'));
+         dispatch(setCalculations(response.data));     
     }
 }
 

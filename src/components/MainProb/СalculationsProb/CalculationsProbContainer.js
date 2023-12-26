@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { compose } from "redux";
 import { getCalculations, getCalculationResultInfoById, deleteCalculationById } from '../../../redux/mainProb-reducer';
 import { connect } from 'react-redux';
@@ -20,10 +20,12 @@ const CalculationsProbContainer = (props) => {
 
     return <>
         <div>
-            <CalculationsProb calculations={props.calculations} deleteCalculationById={props.deleteCalculationById} />
+            <CalculationsProb calculations={props.calculations} deleteCalculationById={props.deleteCalculationById} getCalculations={props.getCalculations}/>
         </div>
         {(props.calculations.calculations[0]?.id == 'iyk') && (<Spin />)}
     </>
+
+
 }
 
 let mapStateToProps = (state) => {
@@ -35,3 +37,5 @@ let mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps, { getCalculations, getCalculationResultInfoById, deleteCalculationById }))
     (CalculationsProbContainer);
+
+

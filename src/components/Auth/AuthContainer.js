@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import  Auth  from './Auth';
 import {useNavigate} from "react-router-dom"
 
-const AuthContainer = React.memo((props) => {
+const AuthContainer =  ((props) => {
 
     let navigate = useNavigate();
 

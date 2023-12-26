@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, legacy_createStore} from "redux"
+import {applyMiddleware, combineReducers, legacy_createStore, compose} from "redux"
 import CalculationProbReducer from './calculationProb-reducer';
 import thunk from "redux-thunk";
 import mainProbReducer from "./mainProb-reducer";
@@ -10,7 +10,10 @@ let reducers = combineReducers({
     calculationProbPage: CalculationProbReducer,
     auth: authReducer
 })
-let store = legacy_createStore(reducers, applyMiddleware(thunk))
+
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+let store = legacy_createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
 window.store = store;
 
 export default store;
