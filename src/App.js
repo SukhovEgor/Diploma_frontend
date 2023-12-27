@@ -21,7 +21,7 @@ const App = () => {
             <BrowserRouter>
                 <Layout className="layout">
                     <Header>
-                        <NavMenu />
+                       <NavMenu />
                     </Header>
                     <Content style={{ height: "93vh" }}>
                         <Routes>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'antd';
@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
         localStorage.removeItem("userId");
 
       }
+    
      return (
          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']} style={{
              display: 'flex',
