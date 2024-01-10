@@ -1,4 +1,4 @@
-import { Button, Card, Form, Input, InputNumber, Row, Switch, message } from "antd";
+import { Button, Card, Divider, Form, Input, InputNumber, Row, Statistic, Switch, Tooltip, message } from "antd";
 import { useNavigate } from "react-router-dom"
 import './CalculationProbForm.css'
 import { useState } from "react";
@@ -16,9 +16,7 @@ const CalculationProbForm = (props) => {
         values.stdDevAdditionalUROVTime = values.stdDevMainRelayTime;
         values.stdDevCircuitBreakerTime = values.stdDevMainRelayTime;
         values.stdDevInputTime = values.stdDevMainRelayTime;
-
-stdDevIntermediateRelayTime
-: 
+        
 
         console.log(values.stdDevMainRelayTime)
         console.log('Success:', values);
@@ -26,7 +24,7 @@ stdDevIntermediateRelayTime
         message.loading('Расчет начат');
         navigate("/result");
     };
-
+    
     const [state, setState] = useState(false);
     console.log(state);
     const onChange = (checked) => {
@@ -51,87 +49,89 @@ stdDevIntermediateRelayTime
                         </Form.Item>
 
                         <Form.Item label="Время работы основной защиты"
-                            className="row"
+                            className="row" rules={[{ required: true, },]}
                         >
                             <Form.Item className="time" name="mainRelayTime"
-                                rules={[{ required: true, },]}>
+                                rules={[{ required: true, message: 'Введите значение времени' },]}>
                                 <InputNumber min={1} max={500} suffix='мс' />
                             </Form.Item>
                             <Form.Item className="stdDev" name="stdDevMainRelayTime"
                                 rules={[{ required: true, },]}>
                                 <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
                             </Form.Item>
-                            <Switch onChange={onChange} />
+                            <Tooltip placement="right" title="Единый разброс">
+                                <Switch onChange={onChange} />
+                            </Tooltip>
                         </Form.Item>
 
                         <Form.Item label="Время работы промежуточного реле"
                             className="row">
                             <Form.Item name="intermediateRelayTime"
-                                rules={[{ required: true, },]}
+                                rules={[{ required: true, message: 'Введите значение времени' },]}
                                 className="time" >
                                 <InputNumber min={0} max={500} suffix='мс' />
                             </Form.Item>
                             {state &&
-                                <Form.Item name="stdDevIntermediateRelayTime" className="stdDev">                 
-                                        <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
+                                <Form.Item name="stdDevIntermediateRelayTime" className="stdDev">
+                                    <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
                                 </Form.Item>}
-                            {!state &&   
-                            <Form.Item name="stdDevIntermediateRelayTime" className="stdDev" rules={[{ required: true, },]}>
-                                    <InputNumber min={0} max={100} placeholder="Разброс" suffix='%'  />
-                            </Form.Item>}
+                            {!state &&
+                                <Form.Item name="stdDevIntermediateRelayTime" className="stdDev" rules={[{ required: true, },]}>
+                                    <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
+                                </Form.Item>}
                         </Form.Item>
 
                         <Form.Item label="Время отключения своего выключателя"
                             className="row"
                         >
                             <Form.Item name="circuitBreakerTime"
-                                rules={[{ required: true, },]}
+                                rules={[{ required: true, message: 'Введите значение времени' },]}
                                 className="time"
                             >
                                 <InputNumber min={1} max={500} suffix='мс' />
                             </Form.Item>
                             {state &&
-                            <Form.Item
-                                name="stdDevCircuitBreakerTime"
-                                className="stdDev"
-                            >
-                                <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
-                            </Form.Item>}
+                                <Form.Item
+                                    name="stdDevCircuitBreakerTime"
+                                    className="stdDev"
+                                >
+                                    <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
+                                </Form.Item>}
                             {!state &&
-                            <Form.Item
-                                name="stdDevCircuitBreakerTime"
-                                rules={[{ required: true, },]}
-                                className="stdDev"
-                            >
-                                <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
-                            </Form.Item>}
+                                <Form.Item
+                                    name="stdDevCircuitBreakerTime"
+                                    rules={[{ required: true, },]}
+                                    className="stdDev"
+                                >
+                                    <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
+                                </Form.Item>}
                         </Form.Item>
 
                         <Form.Item label="Время срабатывания дискретного входа"
                             className="row"
                         >
                             <Form.Item name="inputTime"
-                                rules={[{ required: true, },]}
+                                rules={[{ required: true, message: 'Введите значение времени' },]}
                                 className="time"
                             >
                                 <InputNumber min={0} max={500} suffix='мс' />
                             </Form.Item>
                             {state &&
-                            <Form.Item
-                                name="stdDevInputTime"
-                                
-                                className="stdDev"
-                            >
-                                <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
-                            </Form.Item>}
+                                <Form.Item
+                                    name="stdDevInputTime"
+
+                                    className="stdDev"
+                                >
+                                    <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
+                                </Form.Item>}
                             {!state &&
-                            <Form.Item
-                                name="stdDevInputTime"
-                                rules={[{ required: true, },]}
-                                className="stdDev"
-                            >
-                                <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
-                            </Form.Item>}
+                                <Form.Item
+                                    name="stdDevInputTime"
+                                    rules={[{ required: true, },]}
+                                    className="stdDev"
+                                >
+                                    <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
+                                </Form.Item>}
                         </Form.Item>
 
                         <Form.Item label="Дополнительное время основной защиты"
@@ -144,21 +144,21 @@ stdDevIntermediateRelayTime
                                 <InputNumber min={0} max={500} suffix='мс' />
                             </Form.Item>
                             {state &&
-                            <Form.Item
-                                name="stdDevAdditionalTime"
-                                 
-                                className="stdDev"
-                            >
-                                <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
-                            </Form.Item>}
+                                <Form.Item
+                                    name="stdDevAdditionalTime"
+
+                                    className="stdDev"
+                                >
+                                    <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
+                                </Form.Item>}
                             {!state &&
-                            <Form.Item
-                                name="stdDevAdditionalTime"
-                                rules={[{ required: false, },]}
-                                className="stdDev"
-                            >
-                                <InputNumber min={0} max={100}  placeholder="Разброс" suffix='%' />
-                            </Form.Item>}
+                                <Form.Item
+                                    name="stdDevAdditionalTime"
+                                    rules={[{ required: false, },]}
+                                    className="stdDev"
+                                >
+                                    <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
+                                </Form.Item>}
                         </Form.Item>
 
                         <Form.Item label="Дополнительное время срабатывания УРОВ"
@@ -171,44 +171,44 @@ stdDevIntermediateRelayTime
                                 <InputNumber min={0} max={500} suffix='мс' />
                             </Form.Item>
                             {state &&
-                            <Form.Item
-                                name="stdDevAdditionalUROVTime"
-                                className="stdDev"
-                            >
-                                <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
-                            </Form.Item>}
+                                <Form.Item
+                                    name="stdDevAdditionalUROVTime"
+                                    className="stdDev"
+                                >
+                                    <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
+                                </Form.Item>}
                             {!state &&
-                            <Form.Item
-                                name="stdDevAdditionalUROVTime"
-                                rules={[{ required: false, },]}
-                                className="stdDev"
-                            >
-                                <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
-                            </Form.Item>}
+                                <Form.Item
+                                    name="stdDevAdditionalUROVTime"
+                                    rules={[{ required: false, },]}
+                                    className="stdDev"
+                                >
+                                    <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
+                                </Form.Item>}
                         </Form.Item>
 
                         <Form.Item label="Стартовое значение выдержки времени УРОВ" name="initialValueUROV"
-                            rules={[{ required: true, },]}>
+                            rules={[{ required: true, message: 'Введите значение времени' },]}>
                             <InputNumber min={50} max={500} suffix='мс' />
                         </Form.Item>
 
                         <Form.Item label="Конечное значение выдержки времени УРОВ" name="finalValueUROV"
-                            rules={[{ required: true, },]}>
+                            rules={[{ required: true, message: 'Введите значение времени' },]}>
                             <InputNumber min={1} max={500} suffix='мс' />
                         </Form.Item>
 
                         <Form.Item label="Шаг снижения выдержки времени УРОВ" name="stepValue"
-                            rules={[{ required: true, },]}>
+                            rules={[{ required: true, message: 'Введите шаг' },]}>
                             <InputNumber min={1} max={500} suffix='мс' />
                         </Form.Item>
 
                         <Form.Item label="Количество реализаций" name="implementationQuantity"
-                            rules={[{ required: true, },]}>
+                            rules={[{ required: true, message: 'Введите количество реализаций' },]}>
                             <InputNumber min={1} max={100000} />
                         </Form.Item>
+                  
                         <Form.Item wrapperCol={{ offset: 8, span: 16, }}>
-
-                            <Button type="primary" htmlType="submit" style={{ marginTop: '20px' }}>
+                        <Button type="primary" htmlType="submit" style={{ marginTop: '20px' }}>
                                 Начать расчет
                             </Button>
                         </Form.Item>
