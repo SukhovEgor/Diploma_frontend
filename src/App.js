@@ -11,7 +11,7 @@ import MainProb from './components/MainProb/MainProb';
 import CalculationProbFormContainer from './components/CalculationProbForm/CalculationProbFormContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import AuthContainer from './components/Auth/AuthContainer';
-import Auth from './components/Auth/Auth';
+
 
 const { Header, Content, Footer } = Layout;
 

@@ -9,7 +9,7 @@ const GraphicInit = (props) => {
             data.push(
                 {
                     time: resultArray[i].urovValue * 1000,
-                    probability: resultArray[i].probabilityValue * 100
+                    probability: (resultArray[i].probabilityValue * 100).toFixed(2)
                 })
         }
     }
@@ -18,11 +18,11 @@ const GraphicInit = (props) => {
         <ResponsiveContainer width="100%" height={400}>
             <LineChart width={900} height={450} data={data} margin={{ top: 15, right: 30, left: -10, bottom: -20 }}>
             <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="time" />
+                <XAxis dataKey="time" unit = ' мс'/>
                 <YAxis unit='%' />
                 <Tooltip />
                 <Legend />
-                <Line type="momotone" dataKey="probability" name='Вероятность излишней работы УРОВ' stroke="#158078" dot={false} strokeWidth={3} />
+                <Line type="momotone" dataKey="probability"  name='Вероятность излишней работы УРОВ' stroke="#158078" dot={false} strokeWidth={3} />
             </LineChart>
             </ResponsiveContainer>
         </div>

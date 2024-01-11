@@ -11,12 +11,13 @@ const CalculationProbForm = (props) => {
 
     const onFinish = (values) => {
         values.userId = localStorage.getItem('userId');
-        values.stdDevIntermediateRelayTime = values.stdDevMainRelayTime;
-        values.stdDevAdditionalTime = values.stdDevMainRelayTime;
-        values.stdDevAdditionalUROVTime = values.stdDevMainRelayTime;
-        values.stdDevCircuitBreakerTime = values.stdDevMainRelayTime;
-        values.stdDevInputTime = values.stdDevMainRelayTime;
-        
+        if (!values.stdDevIntermediateRelayTime){
+            values.stdDevIntermediateRelayTime = values.stdDevMainRelayTime;
+            values.stdDevAdditionalTime = values.stdDevMainRelayTime;
+            values.stdDevAdditionalUROVTime = values.stdDevMainRelayTime;
+            values.stdDevCircuitBreakerTime = values.stdDevMainRelayTime;
+            values.stdDevInputTime = values.stdDevMainRelayTime;
+        }
 
         console.log(values.stdDevMainRelayTime)
         console.log('Success:', values);
@@ -56,7 +57,7 @@ const CalculationProbForm = (props) => {
                                 <InputNumber min={1} max={500} suffix='мс' />
                             </Form.Item>
                             <Form.Item className="stdDev" name="stdDevMainRelayTime"
-                                rules={[{ required: true, },]}>
+                                rules={[{ required: true, message: 'Введите разброс'},]}>
                                 <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
                             </Form.Item>
                             <Tooltip placement="right" title="Единый разброс">
@@ -76,13 +77,15 @@ const CalculationProbForm = (props) => {
                                     <InputNumber min={0} max={100} disabled placeholder="Разброс" suffix='%' />
                                 </Form.Item>}
                             {!state &&
-                                <Form.Item name="stdDevIntermediateRelayTime" className="stdDev" rules={[{ required: true, },]}>
+                                <Form.Item name="stdDevIntermediateRelayTime" className="stdDev" rules={[{ required: true, message: 'Введите разброс'},]}>
                                     <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
                                 </Form.Item>}
                         </Form.Item>
 
                         <Form.Item label="Время отключения своего выключателя"
+                       
                             className="row"
+                            
                         >
                             <Form.Item name="circuitBreakerTime"
                                 rules={[{ required: true, message: 'Введите значение времени' },]}
@@ -100,7 +103,7 @@ const CalculationProbForm = (props) => {
                             {!state &&
                                 <Form.Item
                                     name="stdDevCircuitBreakerTime"
-                                    rules={[{ required: true, },]}
+                                    rules={[{ required: true, message: 'Введите разброс'},]}
                                     className="stdDev"
                                 >
                                     <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />
@@ -127,7 +130,7 @@ const CalculationProbForm = (props) => {
                             {!state &&
                                 <Form.Item
                                     name="stdDevInputTime"
-                                    rules={[{ required: true, },]}
+                                    rules={[{ required: true, message: 'Введите разброс'},]}
                                     className="stdDev"
                                 >
                                     <InputNumber min={0} max={100} placeholder="Разброс" suffix='%' />

@@ -23,9 +23,8 @@ const UserCreateForm = ({ open, onCreate, onCancel }) => {
                 </Form.Item>
                 <Form.Item name="post" label="Роль" rules={[{ required: true, message: 'Введите роль', },]}>
                     <Select>
-                        <Select.Option value="Пользователь">Технолог</Select.Option>
+                        <Select.Option value="Технолог">Технолог</Select.Option>
                         <Select.Option value="Администратор">Администратор</Select.Option>
-                        <Select.Option value="Разработчик">Разработчик</Select.Option>
                     </Select>
                 </Form.Item>
                 <Form.Item name="login" label="Логин" rules={[{ required: true, message: 'Введите логин', },]}>
