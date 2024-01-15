@@ -41,7 +41,7 @@ const ResultInfo = (props) => {
         },
     ]
     const data = []
-    if (resultArray.length > 1) {
+    if (resultArray.length > 0) {
         data.push(
             {
                 key: 1,

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button, Form, Input, Modal, Select, message } from 'antd';
 const UserCreateForm = ({ open, onCreate, onCancel, users }) => {
     const [form] = Form.useForm();
+    const handleChange = event => {
+        const result = event.target.value.replace(/[^a-z]/gi, '')}
     return (
         <Modal open={open} title="Добавить нового опльзователя" okText="Создать" cancelText="Отмена" onCancel={onCancel}
             onOk={() => {
@@ -10,8 +12,7 @@ const UserCreateForm = ({ open, onCreate, onCancel, users }) => {
                     
                     for(let i = 0; i < users.length; i++){
                         if(users[i].login == values.login){
-                            debugger;
-                             message.error('Пользователь с таким логином уже существует');
+                            message.error('Пользователь с таким логином уже существует');
                              return
                         }
                     } 
@@ -20,14 +21,15 @@ const UserCreateForm = ({ open, onCreate, onCancel, users }) => {
                 })
                     .catch((info) => { console.log('Validate Failed:', info); });
             }}>
+                
             <Form size='small' form={form} layout="vertical" name="form_in_modal" initialValues={{ modifier: 'public', }}>
-                <Form.Item name="name" label="Имя" rules={[{ required: true, message: 'Введите имя', },]}>
+                <Form.Item name="name" label="Имя" rules={[{ required: true, message: 'Введите имя', pattern: new RegExp("^[a-zA-Zа-яА-Я]*$"),},]}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="surName" label="Фамилия" rules={[{ required: true, message: 'Введите фамилию', },]}>
-                    <Input type="textarea" />
+                <Form.Item name="surName" label="Фамилия" rules={[{ required: true, message: 'Введите фамилию', pattern: new RegExp("^[a-zA-Zа-яА-Я]*$") },]}>
+                    <Input type="textarea" onValuesChange={handleChange}/>
                 </Form.Item>
-                <Form.Item name="lastName" label="Отчество" rules={[{ required: true, message: 'Введите отчество', },]}>
+                <Form.Item name="lastName" label="Отчество" rules={[{ required: true, message: 'Введите отчество', pattern: new RegExp("^[a-zA-Zа-яА-Я]*$") },]}>
                     <Input type="textarea" />
                 </Form.Item>
                 <Form.Item name="post" label="Роль" rules={[{ required: true, message: 'Введите роль', },]}>

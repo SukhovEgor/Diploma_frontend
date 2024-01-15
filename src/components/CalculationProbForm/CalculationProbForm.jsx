@@ -19,6 +19,16 @@ const CalculationProbForm = (props) => {
             values.stdDevInputTime = values.stdDevMainRelayTime;
         }
 
+        if (values.initialValueUROV <= values.finalValueUROV){
+            message.error('Стартовое значение выдержки времени УРОВ меньше конечнонго значения');
+            return
+        }
+
+        if (values.stepValue >= (values.initialValueUROV - values.finalValueUROV)){
+            message.error('Уменьшите шаг снижения выдержки времени УРОВ ');
+            return
+        }
+
         console.log(values.stdDevMainRelayTime)
         console.log('Success:', values);
         props.startCalculation(values);
