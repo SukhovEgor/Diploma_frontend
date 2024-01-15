@@ -22,7 +22,7 @@ const UsersContainer = React.memo((props) => {
 
     return(  
         <div>
-            <Users users={props.users} createUser={createUser} deleteUserById ={deleteUserById}/>
+            <Users users={props.users} createUser={createUser} deleteUserById ={deleteUserById} getUsers={getUsers} />
         </div>  )           
 })
 

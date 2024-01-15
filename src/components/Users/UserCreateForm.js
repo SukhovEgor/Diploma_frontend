@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import { Button, Form, Input, Modal, Select } from 'antd';
-const UserCreateForm = ({ open, onCreate, onCancel }) => {
+import { Button, Form, Input, Modal, Select, message } from 'antd';
+const UserCreateForm = ({ open, onCreate, onCancel, users }) => {
     const [form] = Form.useForm();
     return (
         <Modal open={open} title="Добавить нового опльзователя" okText="Создать" cancelText="Отмена" onCancel={onCancel}
             onOk={() => {
+
                 form.validateFields().then((values) => {
+                    
+                    for(let i = 0; i < users.length; i++){
+                        if(users[i].login == values.login){
+                            debugger;
+                             message.error('Пользователь с таким логином уже существует');
+                             return
+                        }
+                    } 
                     form.resetFields();
                     onCreate(values);
                 })

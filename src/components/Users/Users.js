@@ -57,15 +57,7 @@ const Users = (props) => {
         <div className={s.table}>
             <Table columns={columns} dataSource={props.users.users} bordered title={() => 'Список пользователей'} />
             <Button style={{ float: 'right' }} type="primary" onClick={() => { setOpen(true);}}>Добавить</Button>
-            <UserCreateForm open={open} onCreate={onCreate} onCancel={() => { setOpen(false); }} />
+            <UserCreateForm open={open} users={props.users.users} onCreate={onCreate} onCancel={() => { setOpen(false); }} />
         </div>)
 }
 export default Users;
-
-// title: ' ',
-// key: 'action',
-// render: (_, record) => (
-//     <Popconfirm title="Подвердите удаление" onConfirm={() => deleteUserById(props.users[record.key])}>
-//     <a>{<DeleteOutlined />}</a>
-//     </Popconfirm>
-// ),
