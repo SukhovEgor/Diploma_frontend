@@ -48,6 +48,7 @@ export const setCalculations = (calculations) => (
 export const getCalculations = (userId) => {
     return async (dispatch) => {
         let response = await mainAPI.getCalculations(userId);
+        
         dispatch(setCalculations(response.data));
     }
 }

@@ -1,43 +1,41 @@
 import axios from "axios";
 
-
-
 export const calculationFormAPI = {
     startCalculation(values) {
-        return axios.post("https://localhost:7295/api/Calculations/PostCalculations", values,
+        return axios.post("api/Calculations/PostCalculations", values,
         {headers: { "Content-Type": "application/json"}});
     }
 }
 
 export const mainAPI = {
     getCalculations(userId) {
-        return axios.get('https://localhost:7295/api/Calculations/GetCalculations/' + userId); //
+        return axios.get('http://localhost/api/Calculations/GetCalculations/' + userId); //
         
     },
     getCalculationStatisticById(id) {
-        return axios.get('https://localhost:7295/api/Calculations/GetCalculationResult/'+id); //
+        return axios.get('http://localhost/api/Calculations/GetCalculationResult/'+id); //
     },
     deleteCalculationById(id) {
-        return axios.delete('https://localhost:7295/api/Calculations/DeleteCalculations/'+id); //
+        return axios.delete('http://localhost/api/Calculations/DeleteCalculations/'+id); //
     },
 }
 
 export const authAPI = {
     auth(values) {
-        return axios.post('https://localhost:7295/api/Auth/auth',values); //
+        return axios.post('api/Auth/auth',values); //
     },
     whoAmI() {
-        return axios.get('https://localhost:7295/api/Auth/whoAmI',{headers: authHeader()});
+        return axios.get('api/Auth/whoAmI',{headers: authHeader()});
         
     },
     getUsers() {
-        return axios.get('https://localhost:7295/api/Auth/GetUsers'); //
+        return axios.get('api/Auth/GetUsers'); //
     },
     createUser(values) {
-        return axios.post('https://localhost:7295/api/Auth/CreateUser',values); //
+        return axios.post('api/Auth/CreateUser',values); //
     },
     deleteUserById(id) {
-        return axios.delete('https://localhost:7295/api/Auth/DeleteUser/'+id); //
+        return axios.delete('api/Auth/DeleteUser/'+id); //
     },
 }
 

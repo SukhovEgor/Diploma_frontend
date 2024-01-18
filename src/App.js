@@ -26,8 +26,8 @@ const App = () => {
                     <Content style={{ height: "93vh" }}>
                         <Routes>
                             <Route path="/" element={<Navigate to="/result" />} />
-                            <Route path='/result' element={<RequireAuth><MainProb /></RequireAuth>}>
-                                <Route path=':id' element={<RequireAuth><MainProb /></RequireAuth>} />
+                            <Route exact path='/result' element={<RequireAuth><MainProb /></RequireAuth>}>
+                                <Route exact path=':id' element={<RequireAuth><MainProb /></RequireAuth>} />
                             </Route>
                             <Route exact path='/calculation' element={<RequireAuth><CalculationProbFormContainer /></RequireAuth>} />
                             <Route exact path='/users' element={<RequireAuth><UsersContainer /></RequireAuth>} />
