@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'antd';
-import InfoFile from './../../../public/fileInfo.pdf'
+import InfoFile from './../../fileInfo.pdf'
 import { MenuOutlined, UserOutlined, LogoutOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 
@@ -21,9 +21,6 @@ const NavMenu = () => {
         }
     };
 
-    const downloadInfo = () => {
-
-    }
     return (
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']} style={{
             display: 'flex',

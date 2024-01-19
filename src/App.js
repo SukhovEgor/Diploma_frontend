@@ -19,34 +19,35 @@ const App = () => {
     return (
         <Provider store={store}>
             <BrowserRouter>
-                <Layout className="layout">
-                    <Header>
-                       <NavMenu />
-                    </Header>
-                    <Content style={{ height: "93vh" }}>
-                        <Routes>
-                            <Route path="/" element={<Navigate to="/result" />} />
-                            <Route exact path='/result' element={<RequireAuth><MainProb /></RequireAuth>}>
-                                <Route exact path=':id' element={<RequireAuth><MainProb /></RequireAuth>} />
-                            </Route>
-                            <Route exact path='/calculation' element={<RequireAuth><CalculationProbFormContainer /></RequireAuth>} />
-                            <Route exact path='/users' element={<RequireAuth><UsersContainer /></RequireAuth>} />
-                            <Route exact path='/auth' element={<RequireAuth><AuthContainer /></RequireAuth>} />
+                
+                    <Layout className="layout">
+                        <Header>
+                        <NavMenu />
+                        </Header>
+                        <Content style={{ height: "93vh" }}>
+                            <Routes>
+                                <Route path="/" element={<Navigate to="/result" />} />
+                                <Route exact path='/result' element={<RequireAuth ><MainProb /></RequireAuth>}>
+                                    <Route exact path=':id' element={<RequireAuth ><MainProb /></RequireAuth>} />
+                                </Route>
+                                <Route exact path='/calculation' element={<RequireAuth ><CalculationProbFormContainer /></RequireAuth>} />
+                                <Route exact path='/users' element={<RequireAuth ><UsersContainer /></RequireAuth>} />
+                                <Route exact path='/auth' element={<RequireAuth ><AuthContainer /></RequireAuth>} />
 
-                        </Routes>
-                    </Content>
-
-                </Layout>
+                            </Routes>
+                        </Content>
+                    </Layout>
+                
             </BrowserRouter>
         </Provider>
     );
 };
 const RequireAuth = ({ children }) => {
     if (localStorage.getItem('user') == null) {
-       return <AuthContainer />;
+        return <AuthContainer />;
     }
     return children;
-  };
+};
 
 export default App;
 

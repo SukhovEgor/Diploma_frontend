@@ -5,6 +5,7 @@ import { getUser } from '../../redux/auth-reducer';
 import { connect } from 'react-redux';
 import  Auth  from './Auth';
 import {useNavigate} from "react-router-dom"
+import './Auth.css';
 
 const AuthContainer =  ((props) => {
 
@@ -13,7 +14,7 @@ const AuthContainer =  ((props) => {
     if (!props.auth) { {
     return(  
         <div>
-            <Auth getUser={props.getUser}/>
+            <Auth className="backgroundAuth" getUser={props.getUser}/>
         </div>  )           
 }}
     else {
