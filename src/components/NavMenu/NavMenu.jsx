@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'antd';
-import { MenuOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import InfoFile from './../../../public/fileInfo.pdf'
+import { MenuOutlined, UserOutlined, LogoutOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 
 
@@ -20,6 +21,9 @@ const NavMenu = () => {
         }
     };
 
+    const downloadInfo = () => {
+
+    }
     return (
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']} style={{
             display: 'flex',
@@ -32,10 +36,15 @@ const NavMenu = () => {
                 <NavLink tag={Link} className="text-white" to="/calculation" style={{ textDecoration: 'none' }}>Выполнить расчет</NavLink>
             </Menu.Item>
             <RequireAdmin>
-            <Menu.Item key="users" >
-                <NavLink tag={Link} className="text-white" to="/users" style={{ textDecoration: 'none' }}>Пользователи</NavLink>
-            </Menu.Item>
+                <Menu.Item key="users" >
+                    <NavLink tag={Link} className="text-white" to="/users" style={{ textDecoration: 'none' }}>Пользователи</NavLink>
+                </Menu.Item>
             </RequireAdmin>
+            <Menu.Item icon={
+                <a href={InfoFile} download={'Руководство пользователя.pdf'}>
+                    <QuestionCircleOutlined />
+                </a>
+            }/>
             <Menu.SubMenu title={localStorage.getItem('user')} icon={<UserOutlined />} style={{ float: 'right', marginLeft: 'auto' }}>
                 <Menu.Item icon={<LogoutOutlined />} >
                     <a onClick={logout} href='/'>Выйти</a>

@@ -32,9 +32,6 @@
 .table{  
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 35vh;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
 }
 
 .info {
