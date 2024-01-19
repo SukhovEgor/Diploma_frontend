@@ -28,7 +28,7 @@ const Histogram = (props) => {
 
         data={[trace1, trace2]}
         layout={{
-            width: 570,
+            width: 530,
             height: 0,
             legend: { "orientation": "h" },
             barmode: "overlay",

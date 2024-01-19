@@ -15,7 +15,7 @@ const GraphicInit = (props) => {
     }
     return <div >
         <div className="chart">
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={380}>
             <LineChart width={900} height={450} data={data} margin={{ top: 15, right: 30, left: -10, bottom: -20 }}>
             <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="time" unit = ' мс'/>

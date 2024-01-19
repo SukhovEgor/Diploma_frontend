@@ -9,7 +9,6 @@ const HistogramContainer = (props) => {
     let index = props.calculations?.calculations.findIndex(item => item.id == calculationId);
     let resultArray = props.calculationResults?.calculationResults;
     
-    console.log(resultArray.length)
     if (resultArray.length > 1) {
         return <div>
             {resultArray.map((indexResult) =>

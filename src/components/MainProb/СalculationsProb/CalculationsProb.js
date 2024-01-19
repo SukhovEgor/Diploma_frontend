@@ -46,10 +46,7 @@ const CalculationsUID = (props) => {
                 />
             </TabPane>
         </Tabs>
-        <Pagination
-            defaultCurrent={1}
-            total={calculationsArray.length}
-            pageSize={2} />
+
     </div>;
 }
 export default CalculationsUID;

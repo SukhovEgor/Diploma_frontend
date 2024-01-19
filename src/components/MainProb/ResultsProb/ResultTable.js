@@ -1,4 +1,6 @@
-import { Table } from "antd";
+import { Table, FloatButton, Tooltip, Radio } from "antd";
+import ExportJsonExcel from 'js-export-excel';
+import { useState } from "react";
 import { useParams } from 'react-router-dom';
 
 const ResultTable = (props) => {
@@ -30,10 +32,38 @@ const ResultTable = (props) => {
         }
     }
 
+    const downloadExcel = () => {
+        var option = {};
+
+        option.fileName = props.calculations
+        option.datas = [
+            {
+                sheetData: data,
+                sheetName: 'sheet',
+                sheetFilter: ['key', 'time', 'probability'],
+                sheetHeader: ['Номер реализации', 'Выдежка времени УРОВ', 'Вероятность излишней работы УРОВ'],
+                columnWidths: [7, 10, 13],
+            }
+        ];
+
+        var toExcel = new ExportJsonExcel(option);
+        toExcel.saveExcel();
+    }
+
+    const topOptions = [
+        {
+            label: 'topRight',
+            value: 'topRight',
+        }
+    ]
+    const [top, setTop] = useState('topRight');
 
     return (
-        <div style={{marginRight: 10}}>
-            <Table columns={columns} dataSource={data} pagination={{pageSize: 6}} bordered = {true} size="middle"/>
+        <div style={{ marginRight: 10, marginTop: -10 }}>
+            <Table columns={columns} dataSource={data} options={topOptions} pagination={{ pageSize: 6, position: [top] }} bordered={true} size="middle" />
+            <Tooltip placement="left" title="Скачать результаты">
+                <FloatButton onClick={downloadExcel} />
+            </Tooltip>
 
         </div>
     )

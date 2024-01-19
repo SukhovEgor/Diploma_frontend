@@ -33,4 +33,7 @@
     margin-top: 7px;
     padding-left: 15px;
     padding-right: 5px;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(98, 54%, 49%);
 }

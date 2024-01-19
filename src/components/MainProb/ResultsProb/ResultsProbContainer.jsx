@@ -26,10 +26,9 @@ const ResultsProbContainer = (props) => {
         <div className={s.infoResult}>
             <div className={s.info}>
                 <div className={s.table}>
-                    {/* <Divider >Параметры расчета</Divider> */}
                     <ResultInfo calculations={props.calculations} className={s.graphic} />
                     <div className={s.graphic}>
-                        <ResultTable calculationResults={props.calculationResults} />
+                        <ResultTable calculationResults={props.calculationResults} calculations={props.calculations?.calculations[index]?.name}/>
                     </div>
                 </div>
                 <div className={s.graph}>
