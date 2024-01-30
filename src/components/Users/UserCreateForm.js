@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, Input, Modal, Select, message } from 'antd';
+import { Button, ConfigProvider, Form, Input, Modal, Select, message } from 'antd';
 const UserCreateForm = ({ open, onCreate, onCancel, users }) => {
     const [form] = Form.useForm();
     const handleChange = event => {
@@ -46,6 +46,7 @@ const UserCreateForm = ({ open, onCreate, onCancel, users }) => {
                 </Form.Item>
             </Form>
         </Modal>
+     
     );
 };
 

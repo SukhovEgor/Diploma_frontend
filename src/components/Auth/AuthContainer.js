@@ -3,20 +3,24 @@ import ReactDOM from 'react-dom';
 import { compose } from "redux";
 import { getUser } from '../../redux/auth-reducer';
 import { connect } from 'react-redux';
-import  Auth  from './Auth';
-import {useNavigate} from "react-router-dom"
+import Auth from './Auth';
+import { useNavigate } from "react-router-dom"
 import './Auth.css';
+import { ConfigProvider } from "antd";
 
-const AuthContainer =  ((props) => {
+const AuthContainer = ((props) => {
 
     let navigate = useNavigate();
 
-    if (!props.auth) { {
-    return(  
-        <div>
-            <Auth className="backgroundAuth" getUser={props.getUser}/>
-        </div>  )           
-}}
+    if (!props.auth) {
+        {
+            return (
+                <div>
+                        <Auth getUser={props.getUser} />
+                  
+                </div>)
+        }
+    }
     else {
         navigate("/");
     }
@@ -25,9 +29,9 @@ const AuthContainer =  ((props) => {
 let mapStateToProps = (state) => {
     return {
         auth: state.auth.isAuth
-    }   
+    }
 }
 
 export default compose(
-    connect(mapStateToProps, { getUser}))
+    connect(mapStateToProps, { getUser }))
     (AuthContainer);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from "react-redux";
 import store from "./redux/redux-store";
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, ConfigProvider, Layout, Menu, theme } from 'antd';
 import NavMenu from './components/NavMenu/NavMenu';
 import { Navigate } from 'react-router-dom';
 import { Route, Routes, BrowserRouter } from "react-router-dom";
@@ -19,7 +19,16 @@ const App = () => {
     return (
         <Provider store={store}>
             <BrowserRouter>
-                
+                <ConfigProvider
+                    theme={{
+                        token: {
+                            colorPrimary :'#004731',
+                            Layout: {
+                                headerBg: '#004731',
+                            }
+                        },
+                    }}
+                >
                     <Layout className="layout">
                         <Header>
                         <NavMenu />
@@ -37,11 +46,12 @@ const App = () => {
                             </Routes>
                         </Content>
                     </Layout>
-                
+                </ConfigProvider>
             </BrowserRouter>
         </Provider>
     );
 };
+
 const RequireAuth = ({ children }) => {
     if (localStorage.getItem('user') == null) {
         return <AuthContainer />;

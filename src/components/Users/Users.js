@@ -38,7 +38,7 @@ const Users = (props) => {
             key: 'id',
             render: (_, record) => (
                 <Popconfirm title="Подвердите удаление" name='props,' onConfirm={() => deleteUserById(record.id)}>
-                    <a>{<DeleteOutlined />}</a>
+                    <a>{<DeleteOutlined style={{ color: '#4c5c4c' }}/>}</a>
                 </Popconfirm>
             ),
         },

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import Histogram from "./Histogram";
-
+import s from './ResultsProb.module.css';
 
 const HistogramContainer = (props) => {
     const params = useParams();
@@ -10,9 +10,9 @@ const HistogramContainer = (props) => {
     let resultArray = props.calculationResults?.calculationResults;
     
     if (resultArray.length > 1) {
-        return <div>
+        return <div className={s.histogram}>
             {resultArray.map((indexResult) =>
-                <Histogram
+                <Histogram className={s.histogram}
                     firstHistogram={props.calculations.calculations[index].relayTimeArray}
                     secondHistogram={indexResult.urovTimeArray}
                     urovValue={indexResult.urovValue}

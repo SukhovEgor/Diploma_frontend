@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { compose } from "redux";
 import { getCalculations, getCalculationResultInfoById } from '../../../redux/mainProb-reducer';
 import { connect } from 'react-redux';
-import { Tabs } from 'antd';
+import { ConfigProvider, Tabs } from 'antd';
 import s from './ResultsProb.module.css';
 import { useParams } from 'react-router-dom';
 import {Divider} from 'antd';
@@ -40,7 +40,6 @@ const ResultsProbContainer = (props) => {
                 <HistogramContainer calculationResults={props.calculationResults} calculations={props.calculations} />
             </div>
         </div>
-        {/* <Histograms calculationResults={props.calculationResults} /> */}
     </div>
 
 }

@@ -60,7 +60,15 @@ const ResultTable = (props) => {
 
     return (
         <div style={{ marginRight: 10, marginTop: -10 }}>
-            <Table columns={columns} dataSource={data} options={topOptions} pagination={{ pageSize: 6, position: [top] }} bordered={true} size="middle" />
+            <Table columns={columns}
+                dataSource={data}
+                options={topOptions}
+                pagination={{ pageSize: 6, position: [top] }}
+                bordered={true}
+                size="middle" 
+                scroll={{
+                    y: '29vh'
+                  }}/>
             <Tooltip placement="left" title="Скачать результаты">
                 <FloatButton onClick={downloadExcel} />
             </Tooltip>

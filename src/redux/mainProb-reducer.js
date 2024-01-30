@@ -6,9 +6,9 @@ const SET_CALCULATIONRESULTINFO = 'SET_CALCULATIONRESULTINFO';
 let initialState = {
 
     calculations: {
-        calculationAmount: 2,
+        calculationAmount: 0,
         calculations: [
-            { id: 'iyk', name: 'testInitial' },
+            { id: 'iyk', name: 'emptyCalculation', calculationStart: '01/01/2024' },
         ]
     },
 

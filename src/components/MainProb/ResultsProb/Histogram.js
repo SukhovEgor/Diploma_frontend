@@ -1,6 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-
+import s from './ResultsProb.module.css';
 const Histogram = (props) => {
 
     var x1 = props.firstHistogram
@@ -24,17 +24,16 @@ const Histogram = (props) => {
             color: 'red',
         },
     };
-    return <Plot
+    return <Plot  className={s.histogram}
 
         data={[trace1, trace2]}
         layout={{
-            width: 530,
-            height: 0,
             legend: { "orientation": "h" },
             barmode: "overlay",
             title: "Tуров = " + props.urovValue * 1000 + "мс",
         }}
-        config={{ displaylogo: false, displayModeBar: false, }}
+        
+        config={{ displaylogo: false, displayModeBar: false, responsive: true}}
     />
 }
 export default Histogram;

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { Menu } from 'antd';
+import { Menu, ConfigProvider} from 'antd';
 import InfoFile from './../../fileInfo.pdf'
 import { MenuOutlined, UserOutlined, LogoutOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
+import SOlogo from '../../so.png';
 
 
 const NavMenu = () => {
-
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
@@ -20,12 +20,25 @@ const NavMenu = () => {
             return children;
         }
     };
+    const user = useSelector((state) => state.auth.user);
 
     return (
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']} style={{
+        <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#209e5f',
+            Menu:{
+                darkItemBg: '#004731',
+                horizontalItemBorderRadius: 10
+          },
+        }}}
+      >
+        
+        <Menu theme="dark" type="primary" mode="horizontal" defaultSelectedKeys={['home']} style={{
             display: 'flex',
             alignItems: 'center',
         }}>
+            <img src={SOlogo} style={{height: 50, marginRight: 50}}/>
             <Menu.Item key="results" >
                 <NavLink tag={Link} className="text-white" to="/result" style={{ textDecoration: 'none' }}>Результаты расчетов</NavLink>
             </Menu.Item>
@@ -48,7 +61,10 @@ const NavMenu = () => {
                 </Menu.Item>
             </Menu.SubMenu>
         </Menu>
+        
+        </ConfigProvider>
     )
 }
+
 
 export default NavMenu;

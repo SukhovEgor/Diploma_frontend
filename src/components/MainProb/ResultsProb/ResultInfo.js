@@ -121,7 +121,11 @@ const ResultInfo = (props) => {
             <Tabs >
                 <TabPane tabBarStyle={{marginBottom: 0}} key="1" tab='Время и разброс'>
                     <div style={{ marginRight: 10, marginTop: -10 }}>
-                        <Table columns={columns} dataSource={data} pagination={false} bordered={true} size="small" />
+                        <Table columns={columns} dataSource={data} pagination={false} bordered={true} size="small"                 
+                        scroll={{
+                        y: '32vh',
+                        x: false
+                  }}/>
 
                     </div>
 
