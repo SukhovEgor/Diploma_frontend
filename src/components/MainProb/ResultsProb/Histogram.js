@@ -24,7 +24,7 @@ const Histogram = (props) => {
             color: 'red',
         },
     };
-    return <Plot  className={s.histogram}
+    return <Plot  className={s.oneHistogram}
 
         data={[trace1, trace2]}
         layout={{

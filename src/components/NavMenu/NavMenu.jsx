@@ -34,7 +34,7 @@ const NavMenu = () => {
         }}}
       >
         
-        <Menu theme="dark" type="primary" mode="horizontal" defaultSelectedKeys={['home']} style={{
+        <Menu theme="dark" type="primary" mode="horizontal" defaultSelectedKeys={['home']} overflowedIndicator={<MenuOutlined />} style={{
             display: 'flex',
             alignItems: 'center',
         }}>

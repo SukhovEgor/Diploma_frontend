@@ -86,5 +86,9 @@
     height: 90%;
 }
 .histogram{
+    width: 100%;  
+}
+.oneHistogram{
     width: 100%;
+    height: 40vh;  
 }

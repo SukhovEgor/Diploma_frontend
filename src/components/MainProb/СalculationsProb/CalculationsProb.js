@@ -4,6 +4,7 @@ import { DeleteOutlined, CloseOutlined } from '@ant-design/icons';
 import s from './Calculations.module.css';
 import { useEffect, useState } from 'react';
 import { parsePath, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const { Search } = Input;
 const { TabPane } = Tabs;
@@ -15,7 +16,6 @@ const CalculationsUID = (props) => {
         calculationsArray.push(props.calculations.calculations[i]);
     }
     let navigate = useNavigate();
-
     const [state, setState] = useState(props.calculations.calculations)
     useEffect(() => {
         props.getCalculations(localStorage.getItem('userId'));

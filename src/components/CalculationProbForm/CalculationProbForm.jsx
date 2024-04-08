@@ -20,7 +20,7 @@ const CalculationProbForm = (props) => {
         }
 
         if (values.initialValueUROV <= values.finalValueUROV){
-            message.error('Стартовое значение выдержки времени УРОВ меньше конечнонго значения');
+            message.error('Стартовое значение выдержки времени УРОВ меньше конечного значения');
             return
         }
 
